@@ -1,0 +1,263 @@
+<!DOCTYPE html>
+<html lang="zh-TW">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>輕量化折疊電輔車互動比較表</title>
+  <style>
+    :root { --primary:#1a73e8; --light:#e8f0fe; --bg:#f8f9fa; --card:#fff; --text:#202124; --muted:#5f6368; --border:#dadce0; --green:#188038; --red:#d93025; }
+    * { box-sizing:border-box; font-family:-apple-system,BlinkMacSystemFont,"Segoe UI","Noto Sans TC",sans-serif; }
+    body { margin:0; padding:16px; background:var(--bg); color:var(--text); line-height:1.5; }
+    .wrap { max-width:1100px; margin:0 auto; }
+    h1 { font-size:1.35rem; margin:0 0 12px; }
+    .box { background:var(--card); padding:14px; border-radius:10px; border:1px solid var(--border); margin-bottom:14px; display:flex; flex-wrap:wrap; gap:16px; }
+    .grp { display:flex; flex-direction:column; gap:6px; }
+    .grp label { font-size:0.82rem; font-weight:700; color:var(--muted); }
+    .btns, .tabs { display:flex; flex-wrap:wrap; gap:6px; }
+    .tabs { margin-bottom:14px; border-bottom:1px solid var(--border); padding-bottom:8px; }
+    button { padding:6px 12px; border:1px solid var(--border); background:#fff; border-radius:8px; cursor:pointer; font-size:0.86rem; transition:0.15s; }
+    button:hover { background:#f1f3f4; }
+    button.active { background:var(--primary); color:#fff; border-color:var(--primary); font-weight:600; }
+    .tab-btn { border:none; background:transparent; color:var(--muted); font-size:0.92rem; }
+    .tab-btn.active { background:var(--light); color:var(--primary); font-weight:700; }
+    .btn-export { background:var(--green); color:#fff; border-color:var(--green); font-weight:600; padding:8px 16px; }
+    .btn-export:hover { background:#137333; }
+    .map-links { display:flex; flex-wrap:wrap; gap:6px; margin-top:6px; }
+    .map-btn { display:inline-flex; align-items:center; gap:4px; padding:4px 10px; background:#fce8e6; color:var(--red); border:1px solid #f6aea9; border-radius:6px; font-size:0.78rem; font-weight:600; text-decoration:none; transition:0.15s; }
+    .map-btn:hover { background:var(--red); color:#fff; border-color:var(--red); }
+    .tbl-wrap { overflow-x:auto; background:var(--card); border-radius:10px; border:1px solid var(--border); }
+    table { width:100%; border-collapse:collapse; min-width:880px; font-size:0.86rem; }
+    th, td { padding:10px; text-align:left; border-bottom:1px solid var(--border); vertical-align:top; }
+    th { background:#f1f3f4; font-weight:700; }
+    .tag { display:inline-block; padding:2px 8px; border-radius:99px; font-size:0.76rem; font-weight:600; background:var(--light); color:var(--primary); }
+    .tag-g { background:#e6f4ea; color:var(--green); }
+    .card-view, .score-view { display:none; }
+    .card-box { background:var(--card); border:1px solid var(--border); border-radius:10px; padding:18px; }
+    .nav { display:flex; justify-content:space-between; align-items:center; margin-bottom:14px; padding-bottom:10px; border-bottom:1px solid var(--border); }
+    .grid { display:grid; grid-template-columns:repeat(auto-fit,minmax(260px,1fr)); gap:10px; }
+    .item { background:#f8f9fa; padding:10px; border-radius:8px; font-size:0.88rem; }
+    .item b { display:block; font-size:0.8rem; color:var(--muted); margin-bottom:3px; }
+    .score-bar { display:flex; justify-content:space-between; align-items:center; flex-wrap:wrap; gap:10px; background:var(--card); padding:12px 16px; border-radius:10px; border:1px solid var(--border); margin-bottom:14px; }
+    .score-grid { display:grid; grid-template-columns:repeat(auto-fit,minmax(280px,1fr)); gap:14px; }
+    .s-card { background:var(--card); border:1px solid var(--border); border-radius:10px; padding:14px; }
+    .s-row { display:flex; justify-content:space-between; align-items:center; margin:6px 0; font-size:0.85rem; }
+    .tot { font-size:1.1rem; font-weight:700; color:var(--primary); margin-top:10px; padding-top:8px; border-top:1px dashed var(--border); }
+  </style>
+</head>
+<body>
+<div class="wrap">
+  <h1>輕量化折疊電輔車規格與購車評估工具</h1>
+  <div class="box">
+    <div class="grp"><label>預算區間篩選</label>
+      <div class="btns" id="bFilter">
+        <button class="active" data-v="all">全部車款</button>
+        <button data-v="u20">2 萬元以內</button>
+        <button data-v="o30">3.2 萬～4 萬元</button>
+      </div>
+    </div>
+    <div class="grp"><label>車身重量上限</label>
+      <div class="btns" id="wFilter">
+        <button class="active" data-v="99">全部重量</button>
+        <button data-v="17">17 kg 以下</button>
+        <button data-v="18.5">18.5 kg 以下</button>
+      </div>
+    </div>
+  </div>
+
+  <div class="tabs">
+    <button class="tab-btn active" onclick="setTab('table',this)">1. 完整表格總覽</button>
+    <button class="tab-btn" onclick="setTab('card',this)">2. 逐筆卡片瀏覽</button>
+    <button class="tab-btn" onclick="setTab('score',this)">3. 個人購車評分排行</button>
+  </div>
+
+  <div id="tableView" class="tbl-wrap">
+    <table>
+      <thead><tr><th>排名</th><th>車款名稱</th><th>車重</th><th>最低參考價</th><th>出品／改款年代</th><th>官方續航</th><th>剎車與操控系統</th><th>保固與高雄賞車據點</th></tr></thead>
+      <tbody id="tBody"></tbody>
+    </table>
+  </div>
+
+  <div id="cardView" class="card-view card-box">
+    <div class="nav"><button onclick="step(-1)">← 上一款</button><span id="cIdx" style="font-weight:700"></span><button onclick="step(1)">下一款 →</button></div>
+    <div id="cBody"></div>
+  </div>
+
+  <div id="scoreView" class="score-view">
+    <div class="score-bar">
+      <span style="font-size:0.88rem;color:#5f6368;">拖曳下方滑桿調整各項評分（1～5分），系統會自動依總分重新排序：</span>
+      <button class="btn-export" onclick="exportScoreCSV()">📥 匯出個人評分結果為 CSV</button>
+    </div>
+    <div class="score-grid" id="sBody"></div>
+  </div>
+</div>
+
+<script>
+const data = new Array(
+  {
+    r:1, n:"騎記 QiCYCLE EF1", w:15.4, wt:"15.4 kg", p:"NT$ 15,911–15,913（PChome / momo）", cat:"u20",
+    era:"2016 首發 / 2023 台製歐規改款版", rng:"電助力約 45 km（無純電）",
+    brk:"前 V 夾 + 後 Shimano 羅拉鼓煞", ctl:"五通力矩感測 + 3 段助力（無轉把）",
+    spc:"16吋 / 內三速 / 36V 5.5Ah 可抽換電池 / 250W", war:"全車 1 年保固（台灣永祺製造）",
+    str:"PChome、momo、蝦皮｜高雄：佑陞單車（07-310-4103）",
+    maps: new Array({ label:"佑陞單車（三民區鼎強街84號）", q:"高雄市三民區鼎強街84號" }),
+    sc: new Array(5, 5, 4, 3)
+  },
+  {
+    r:2, n:"BARRY 閃電俠 20吋", w:16.5, wt:"16.5 kg", p:"NT$ 33,000（官網）/ NT$ 36,600（全國電子）", cat:"o30",
+    era:"約 2023–2024 年初上市", rng:"電助力 30–50 km（無純電）",
+    brk:"前後機械式碟煞", ctl:"速度踏頻感測 + 5 段助力（LCD 儀表）",
+    spc:"20吋 / Shimano 7速 / 36V 電池 / 附前後燈", war:"全車／電控 1 年保固（含實體門市）",
+    str:"OneCool 官網、全國電子｜高雄三民區／仁武區可試乘",
+    maps: new Array(
+      { label:"191單車民族店（三民區）", q:"高雄市三民區民族一路529-1號" },
+      { label:"美利達順宏八德店（仁武區）", q:"高雄市仁武區八德南路100巷2弄11-7號" }
+    ),
+    sc: new Array(3, 5, 4, 4)
+  },
+  {
+    r:3, n:"G-FORCE D6", w:17.0, wt:"17.0 kg", p:"NT$ 19,800（蝦皮 48V 12Ah 版）", cat:"u20",
+    era:"約 2020 首發 / 2026 年式電控升級版", rng:"電助力約 50 km（純電約 30 km）",
+    brk:"前後機械雙碟煞 + EBS 電子煞車", ctl:"正弦波控制器 + 三模式 + 定速巡航",
+    spc:"14吋 / 三段助力 / 48V 12Ah / 400W 馬達", war:"依賣場代理規定（車架電機1年、電池6-12月）",
+    str:"蝦皮購物（務必確認含稅與合法閃電標章，高雄無固定展示點）",
+    maps: new Array(),
+    sc: new Array(4, 4, 2, 4)
+  },
+  {
+    r:4, n:"GIANT Expressway E+", w:18.0, wt:"約 18.0 kg", p:"NT$ 32,476（PChome）/ NT$ 34,800（飛馬）", cat:"o30",
+    era:"2022 首發 / 已推出 2027 年式新車色", rng:"電助力最高約 50 km（無純電）",
+    brk:"前後油壓碟煞（全場唯一油壓）", ctl:"Giant 智慧助力系統 + 多重感測（步行輔助）",
+    spc:"20吋 / Shimano 7速 / 360Wh 電池", war:"車架終身 + 電控電機電池 2 年保固（200門市）",
+    str:"PChome、全台捷安特門市（07-553-1412）",
+    maps: new Array({ label:"捷安特高雄旗艦店（鼓山區）", q:"高雄市鼓山區中華一路2218號" }),
+    sc: new Array(4, 3, 5, 4)
+  },
+  {
+    r:5, n:"BAICYCLE S1", w:18.8, wt:"18.8 kg", p:"NT$ 11,100–15,000（依賣場版本浮動）", cat:"u20",
+    era:"2021 年 10 月發表世代架構", rng:"電助力約 40 km（純電約 25 km）",
+    brk:"前後機械雙碟煞（煞車斷電）", ctl:"踏頻感測 + 雙模式控制（LED 指示燈）",
+    spc:"12吋 / 單速 / 36V 6Ah / 250W 無刷馬達", war:"依個別賣家提供（多為 3 個月～1 年有限保固）",
+    str:"蝦皮購物（無品牌直營實體維修站）",
+    maps: new Array(),
+    sc: new Array(5, 3, 2, 3)
+  },
+  {
+    r:6, n:"CyberCycle Pony 小馬", w:19.0, wt:"約 19.0 kg（含電池 22 kg）", p:"NT$ 39,800（OObike 官網 / momo）", cat:"o30",
+    era:"2024 年中全新發表世代", rng:"電助力最高可達 100 km（無純電）",
+    brk:"前後機械碟煞（20x2.25 吋寬胎）", ctl:"48V 高性能電控 + 速度踏頻感測（無轉把）",
+    spc:"20吋 / Shimano 7速 / 48V 10Ah 韓系電芯 / 350W", war:"車架終身 + 非消耗零件（含電池電機）1 年保固",
+    str:"OObike 官網、momo｜高雄新興區／苓雅區可體驗",
+    maps: new Array(
+      { label:"盛單車（新興區八德一路225號）", q:"高雄市新興區八德一路225號" },
+      { label:"正爵單車（苓雅區四維二路114-1號）", q:"高雄市苓雅區四維二路114-1號" }
+    ),
+    sc: new Array(3, 2, 4, 5)
+  }
+);
+
+let bVal="all", wVal=99, idx=0;
+const labels = new Array("價格 CP 值", "搬運輕巧度", "保固與售後", "動力與續航");
+
+function renderMapButtons(maps){
+  if(!maps || !maps.length) return "";
+  return `<div class="map-links">` + maps.map(m =>
+    `<a class="map-btn" href="https://www.google.com/maps/search/?api=1&query=${encodeURIComponent(m.q)}" target="_blank" rel="noopener">📍 ${m.label}</a>`
+  ).join("") + `</div>`;
+}
+
+function getList(){ return data.filter(d => (bVal==="all"||d.cat===bVal) && d.w<=wVal); }
+
+function getRankedList(){
+  return getList().slice().map(d=>({...d,tot:d.sc.reduce((a,b)=>a+b,0)})).sort((a,b)=>b.tot-a.tot);
+}
+
+function render(){
+  const list = getList();
+  document.getElementById("tBody").innerHTML = list.map(d=>`<tr>
+    <td><span class="tag">#${d.r}</span></td>
+    <td><b>${d.n}</b><br><small style="color:#5f6368">${d.spc}</small></td>
+    <td><b>${d.wt}</b></td>
+    <td><span class="tag tag-g">${d.p}</span></td>
+    <td>${d.era}</td>
+    <td>${d.rng}</td>
+    <td><b>剎車：</b>${d.brk}<br><b>操控：</b>${d.ctl}</td>
+    <td><b>保固：</b>${d.war}<br><b>管道：</b>${d.str}${renderMapButtons(d.maps)}</td>
+  </tr>`).join("") || `<tr><td colspan="8" style="text-align:center;padding:20px">無符合篩選條件的車款</td></tr>`;
+
+  if(idx>=list.length) idx=0;
+  const cBody=document.getElementById("cBody"), cIdx=document.getElementById("cIdx");
+  if(!list.length){ cIdx.textContent="0 / 0"; cBody.innerHTML="<p>無符合條件車款</p>"; }
+  else {
+    const d=list[idx];
+    cIdx.textContent=`第 ${idx+1} 筆 / 共 ${list.length} 筆（車重排名 #${d.r}）`;
+    cBody.innerHTML=`<h2 style="margin:0 0 12px;color:#1a73e8">${d.n} <span class="tag">${d.wt}</span></h2> <div class="grid"> <div class="item"><b>最低參考價</b>${d.p}</div> <div class="item"><b>出品／改款年代</b>${d.era}</div> <div class="item"><b>官方行駛距離</b>${d.rng}</div> <div class="item"><b>剎車系統</b>${d.brk}</div> <div class="item"><b>操控系統與助力</b>${d.ctl}</div> <div class="item"><b>電池、馬達與變速</b>${d.spc}</div> <div class="item"><b>保固與售後</b>${d.war}</div> <div class="item"><b>購買與高雄試乘點（點擊開啟地圖）</b>${d.str}${renderMapButtons(d.maps)}</div> </div>`;
+}
+  renderScores();
+}
+
+function setTab(name, button){
+  for(const view of ['table','card','score']){
+    document.getElementById(view+'View').style.display = view===name ? 'block' : 'none';
+  }
+  document.querySelectorAll('.tab-btn').forEach(b=>b.classList.toggle('active',b===button));
+}
+
+function step(direction){
+  const count=getList().length;
+  idx=count ? (idx+direction+count)%count : 0;
+  render();
+}
+
+function renderScores(){
+  const list=getRankedList();
+  document.getElementById('sBody').innerHTML=list.map((d,i)=>`
+    <div class="s-card" data-id="${d.r}">
+      <h3 style="margin:0 0 10px">第 ${i+1} 名：${d.n}</h3>
+      ${labels.map((label,j)=>`<div class="s-row"><label for="score-${d.r}-${j}">${label}</label><output id="value-${d.r}-${j}">${d.sc[j]}</output></div>
+      <input id="score-${d.r}-${j}" type="range" min="1" max="5" step="1" value="${d.sc[j]}" style="width:100%" data-id="${d.r}" data-score="${j}" aria-label="${d.n} ${label}">`).join('')}
+      <div class="tot">總分：${d.tot} / 20</div>
+    </div>`).join('') || '<p>無符合條件車款</p>';
+}
+
+document.getElementById('sBody').addEventListener('input',event=>{
+  const input=event.target;
+  if(!input.matches('input[type="range"]')) return;
+  data.find(d=>d.r===Number(input.dataset.id)).sc[Number(input.dataset.score)]=Number(input.value);
+  document.getElementById(`value-${input.dataset.id}-${input.dataset.score}`).textContent=input.value;
+  const d=data.find(d=>d.r===Number(input.dataset.id));
+  input.closest('.s-card').querySelector('.tot').textContent=`總分：${d.sc.reduce((a,b)=>a+b,0)} / 20`;
+});
+document.getElementById('sBody').addEventListener('change',event=>{
+  if(event.target.matches('input[type="range"]')) renderScores();
+});
+
+for(const [id,isBudget] of [['bFilter',true],['wFilter',false]]){
+  document.getElementById(id).addEventListener('click',event=>{
+    const button=event.target.closest('button');
+    if(!button) return;
+    if(isBudget) bVal=button.dataset.v;
+    else wVal=Number(button.dataset.v);
+    idx=0;
+    document.querySelectorAll('#'+id+' button').forEach(b=>b.classList.toggle('active',b===button));
+    render();
+  });
+}
+
+function exportScoreCSV(){
+  const rows=[['評分排名','車款名稱','車重','最低參考價',...labels,'總分'],
+    ...getRankedList().map((d,i)=>[i+1,d.n,d.wt,d.p,...d.sc,d.tot])];
+  const csv='\uFEFF'+rows.map(row=>row.map(value=>'"'+String(value).replace(/"/g,'""')+'"').join(',')).join('\r\n');
+  const url=URL.createObjectURL(new Blob([csv],{type:'text/csv;charset=utf-8;'}));
+  const link=document.createElement('a');
+  link.href=url;
+  link.download='電輔車個人評分.csv';
+  document.body.appendChild(link);
+  link.click();
+  link.remove();
+  setTimeout(()=>URL.revokeObjectURL(url),1000);
+}
+
+render();
+</script>
+</body>
+</html>
