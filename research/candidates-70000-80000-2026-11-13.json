@@ -1,0 +1,38 @@
+{
+  "checked": "2026-11-13",
+  "scope": "新台幣70000至80000元；尚未確認符合價格且台灣販售的折疊車，以下為非折疊候選，未加入正式比較資料或發布",
+  "candidates": [
+    {
+      "name": "BESV JR1",
+      "price": 78000,
+      "officialPrice": 78800,
+      "foldable": false,
+      "status": "已排除：非折疊車",
+      "sources": [
+        "https://www.besv.com.tw/jr1",
+        "https://www.hotaigo.com.tw/productdetail/hotai72264-uu0-003-231.html"
+      ]
+    },
+    {
+      "name": "Acer ebii",
+      "price": 78800,
+      "foldable": false,
+      "status": "已排除：非折疊車",
+      "sources": [
+        "https://www.acer.com/ebii/tw-zh/index.html",
+        "https://711go.7-11.com.tw/product/270028"
+      ]
+    },
+    {
+      "name": "GIANT FastRoad E+ 2026",
+      "price": 79800,
+      "foldable": false,
+      "status": "已排除：非折疊車",
+      "sources": [
+        "https://www.giant-bicycles.com/tw/fastroad-eplus"
+      ]
+    }
+  ],
+  "decision": "使用者確認只收折疊車；下列非折疊候選全部排除，不加入比較資料表。",
+  "status": "待補：尚未確認符合條件折疊車"
+}

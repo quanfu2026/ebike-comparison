@@ -47,7 +47,7 @@
 <body>
 <div class="wrap">
   <h1>輕量化折疊電輔車規格與購車評估工具 <span class="tag">1.1 版</span></h1>
-  <p style="font-size:.86rem;color:#5f6368">預算上限擴至 NT$60,000｜新增4款，保留原6款。新增資料查核：2026-11-13。價格不含未列明的配件／運費，預購不保證現貨。原6款資料尚未逐項複核；重量是否含電池以各來源註記為準。</p>
+  <p style="font-size:.86rem;color:#5f6368">僅收折疊電輔車｜現有10款。7～8萬元區間尚未確認符合條件車款，資料待補。新增資料查核：2026-11-13。價格不含未列明的配件／運費，預購不保證現貨。原6款資料尚未逐項複核；重量是否含電池以各來源註記為準。</p>
   <div class="box">
     <div class="grp"><label>預算區間篩選</label>
       <div class="btns" id="bFilter">
@@ -57,6 +57,7 @@
         <button data-v="u60">6 萬元以內</button>
         <button data-v="40to60">4 萬以上～6 萬元</button>
         <button data-v="50to60">5～6 萬元</button>
+        <button data-v="70to80">7～8 萬元（待補）</button>
       </div>
     </div>
     <div class="grp"><label>車身重量上限</label>
@@ -174,10 +175,11 @@ function renderMapButtons(maps){
 
 function getList(){
   return data.filter(d => {
-    const match=bVal==='all' || (bVal==='u20' && d.price<=20000) || (bVal==='u40' && d.price<=40000) || (bVal==='u60' && d.price<=60000) || (bVal==='40to60' && d.price>40000 && d.price<=60000) || (bVal==='50to60' && d.price>=50000 && d.price<=60000);
+    const match=bVal==='all' || (bVal==='u20' && d.price<=20000) || (bVal==='u40' && d.price<=40000) || (bVal==='u60' && d.price<=60000) || (bVal==='40to60' && d.price>40000 && d.price<=60000) || (bVal==='50to60' && d.price>=50000 && d.price<=60000) || (bVal==='70to80' && d.price>=70000 && d.price<=80000);
     return match && d.w<=wVal;
   });
 }
+function emptyMessage(){ return bVal==='70to80' ? '7～8萬元折疊電輔車：尚未確認符合條件車款，資料待補（查核：2026-11-13）' : '無符合篩選條件的車款'; }
 function renderSources(d){
   if(!d.sources) return '<small style="display:block;color:#5f6368">原1.0資料，尚未逐項複核</small>';
   return '<small style="display:block">查核：'+d.checked+'<br>'+d.sources.map(s=>`<a href="${s.url}" target="_blank" rel="noopener noreferrer">${s.label}</a>`).join(' · ')+'</small>';
@@ -198,11 +200,11 @@ function render(){
     <td>${d.rng}</td>
     <td><b>剎車：</b>${d.brk}<br><b>操控：</b>${d.ctl}</td>
     <td><b>保固：</b>${d.war}<br><b>管道：</b>${d.str}${renderMapButtons(d.maps)}</td>
-  </tr>`).join("") || `<tr><td colspan="8" style="text-align:center;padding:20px">無符合篩選條件的車款</td></tr>`;
+  </tr>`).join("") || `<tr><td colspan="8" style="text-align:center;padding:20px">${emptyMessage()}</td></tr>`;
 
   if(idx>=list.length) idx=0;
   const cBody=document.getElementById("cBody"), cIdx=document.getElementById("cIdx");
-  if(!list.length){ cIdx.textContent="0 / 0"; cBody.innerHTML="<p>無符合條件車款</p>"; }
+  if(!list.length){ cIdx.textContent="0 / 0"; cBody.innerHTML=`<p>${emptyMessage()}</p>`; }
   else {
     const d=list[idx];
     cIdx.textContent=`第 ${idx+1} 筆 / 共 ${list.length} 筆（車款編號 #${d.r}）`;
@@ -232,7 +234,7 @@ function renderScores(){
       ${labels.map((label,j)=>`<div class="s-row"><label for="score-${d.r}-${j}">${label}</label><output id="value-${d.r}-${j}">${d.sc[j]}</output></div>
       <input id="score-${d.r}-${j}" type="range" min="1" max="5" step="1" value="${d.sc[j]}" style="width:100%" data-id="${d.r}" data-score="${j}" aria-label="${d.n} ${label}">`).join('')}
       <div class="tot">總分：${d.tot} / 20</div>
-    </div>`).join('') || '<p>無符合條件車款</p>';
+    </div>`).join('') || `<p>${emptyMessage()}</p>`;
 }
 
 document.getElementById('sBody').addEventListener('input',event=>{
