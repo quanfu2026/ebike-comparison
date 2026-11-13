@@ -1,0 +1,116 @@
+{
+  "checked": "2026-11-13",
+  "decision": "使用者已同意加入非折疊車",
+  "products": [
+    {
+      "r": 12,
+      "n": "BESV JR1",
+      "w": 16,
+      "wt": "M：16 kg；XS：15.7 kg（篩選採M）",
+      "price": 78800,
+      "p": "NT$78,800（官方建議售價）",
+      "era": "台灣官網未列本批年式，請洽交車門市",
+      "rng": "Eco最高100 km／Power 55 km（官方條件測試）",
+      "brk": "Shimano 105 油壓碟煞",
+      "ctl": "扭力感測 / Eco、Smart、Power",
+      "spc": "非折疊公路車 / 700×25C / Shimano 105 22速 / 36V 7Ah 252Wh / 250W後輪馬達",
+      "war": "授權通路第一手車主：車架／非避震前叉5年、電控含電池2年、非耗材1年；依原廠條款",
+      "str": "BESV授權門市；高雄交車點、尺寸現貨與試乘請先詢問",
+      "maps": [],
+      "sources": [
+        {
+          "label": "官方規格與定價",
+          "url": "https://www.besv.com.tw/jr1"
+        },
+        {
+          "label": "官方保固",
+          "url": "https://www.besv.com.tw/warranty"
+        },
+        {
+          "label": "通路交車門市",
+          "url": "https://www.hotaigo.com.tw/productdetail/hotai72264-uu0-003-231.html"
+        }
+      ],
+      "foldable": false,
+      "sc": [
+        3,
+        3,
+        3,
+        3
+      ],
+      "checked": "2026-11-13"
+    },
+    {
+      "r": 13,
+      "n": "Acer ebii",
+      "w": 23.5,
+      "wt": "23.5 kg（含電池與擋泥板）",
+      "price": 78990,
+      "p": "NT$78,990（7-ELEVEN i預購通路標價；庫存待確認）",
+      "era": "官網未列本批年式，請洽通路",
+      "rng": "最高110 km（官方標示，依使用條件變動）",
+      "brk": "160 mm液壓碟煞",
+      "ctl": "ebiiAssist 自動助力 / 48V CAN控制 / 手機連線、後方雷達",
+      "spc": "非折疊城市車 / 20×2.2吋 / 單速皮帶 / 可拆電池 / 250W輪轂馬達；電池頁面單位460W待確認",
+      "war": "保固期限與適用條件待通路提供書面保證；洽倚天酷碁支援",
+      "str": "7-ELEVEN i預購；高雄實體展示／試乘點待確認",
+      "maps": [],
+      "sources": [
+        {
+          "label": "官方規格",
+          "url": "https://www.acer.com/ebii/tw-zh/index.html"
+        },
+        {
+          "label": "78,990元通路頁",
+          "url": "https://711go.7-11.com.tw/product/270028"
+        },
+        {
+          "label": "官方服務支援",
+          "url": "https://www.acergadget.com/customer-support/"
+        }
+      ],
+      "foldable": false,
+      "sc": [
+        3,
+        3,
+        3,
+        3
+      ],
+      "checked": "2026-11-13"
+    },
+    {
+      "r": 14,
+      "n": "GIANT FastRoad E+（2026）",
+      "w": 20,
+      "wt": "約20 kg（官方；實車依尺寸及配備）",
+      "price": 79800,
+      "p": "NT$79,800（台灣官方售價）",
+      "era": "2026年式（台灣官方產品頁）",
+      "rng": "官方情境估算55／110／180 km（Extreme／Good／Ideal），非固定續航",
+      "brk": "TEKTRO 油壓碟煞",
+      "ctl": "SyncDrive Sport中置70 Nm / 六感測器 / RideControl Ergo / RideDash Evo",
+      "spc": "非折疊平把車 / 700×38C / Shimano 10速 / Panasonic 500Wh / 可另購250Wh增程電池",
+      "war": "本次未核實完整保固年限；請依台灣原廠保證書與交車條款",
+      "str": "台灣捷安特門市；高雄尺寸、庫存與試乘須先確認",
+      "maps": [],
+      "sources": [
+        {
+          "label": "台灣官方價格／規格",
+          "url": "https://www.giant-bicycles.com/tw/fastroad-eplus"
+        },
+        {
+          "label": "官方門市查詢",
+          "url": "https://www.giant-bicycles.com/tw/stores"
+        }
+      ],
+      "foldable": false,
+      "sc": [
+        3,
+        3,
+        3,
+        3
+      ],
+      "checked": "2026-11-13"
+    }
+  ]
+}

@@ -7,7 +7,7 @@
       "price": 78000,
       "officialPrice": 78800,
       "foldable": false,
-      "status": "已排除：非折疊車",
+      "status": "已納入；以現行products-nonfolding檔的價格與規格為準",
       "sources": [
         "https://www.besv.com.tw/jr1",
         "https://www.hotaigo.com.tw/productdetail/hotai72264-uu0-003-231.html"
@@ -17,7 +17,7 @@
       "name": "Acer ebii",
       "price": 78800,
       "foldable": false,
-      "status": "已排除：非折疊車",
+      "status": "已納入；以現行products-nonfolding檔的價格與規格為準",
       "sources": [
         "https://www.acer.com/ebii/tw-zh/index.html",
         "https://711go.7-11.com.tw/product/270028"
@@ -27,12 +27,12 @@
       "name": "GIANT FastRoad E+ 2026",
       "price": 79800,
       "foldable": false,
-      "status": "已排除：非折疊車",
+      "status": "已納入；以現行products-nonfolding檔的價格與規格為準",
       "sources": [
         "https://www.giant-bicycles.com/tw/fastroad-eplus"
       ]
     }
   ],
-  "decision": "使用者確認只收折疊車；下列非折疊候選全部排除，不加入比較資料表。",
-  "status": "待補：尚未確認符合條件折疊車"
+  "decision": "2026-11-13使用者後續同意加入非折疊車，現行資料見products-nonfolding-2026-11-13.json",
+  "status": "已加入3款非折疊車；折疊候選仍待補"
 }
