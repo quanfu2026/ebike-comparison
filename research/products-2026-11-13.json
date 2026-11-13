@@ -1,0 +1,169 @@
+{
+  "checked": "2026-11-13",
+  "scope": "保留原6款，預算上限提高至新台幣6萬元，新增折疊電輔車",
+  "products": [
+    {
+      "r": 7,
+      "n": "HASA SEF16",
+      "w": 12.5,
+      "wt": "12.5 kg（官網；是否含電池未註明）",
+      "price": 32500,
+      "p": "NT$32,500（官方建議售價）",
+      "era": "官網未列上市／改款年份",
+      "rng": "官網未公布；通路標示約40～50 km，測試條件不同",
+      "brk": "PROMAX MV-87 框煞",
+      "ctl": "5 段 PAS；感測器類型待確認",
+      "spc": "16吋 / 單速 / 36V 7Ah 座管電池 / 250W 後輪馬達",
+      "war": "官網產品頁未列保固年限；請索取書面保證卡",
+      "str": "HASA 經銷商｜冠鑫自行車 07-724-0816（展示／試乘須先確認）",
+      "maps": [
+        {
+          "label": "冠鑫自行車（前鎮區）",
+          "q": "高雄市前鎮區崗山西街193號"
+        }
+      ],
+      "sc": [
+        3,
+        3,
+        3,
+        3
+      ],
+      "checked": "2026-11-13",
+      "sources": [
+        {
+          "label": "官方規格與售價",
+          "url": "https://www.hasa.com.tw/webls-zh-tw/product-SEF-16.html"
+        },
+        {
+          "label": "官方經銷商名錄",
+          "url": "https://www.hasa.com.tw/webls-zh-tw/msg/msg288.html"
+        },
+        {
+          "label": "通路續航／重量差異",
+          "url": "https://bikehome.com.tw/product.ftl?PC=217-370-1&agiCode=PTAGI05EO4L3NUT8CDZ65JQGBG&cCode=A-H-HASA"
+        }
+      ]
+    },
+    {
+      "r": 8,
+      "n": "HASA SEF20",
+      "w": 16.25,
+      "wt": "16.25 kg（官網；是否含電池未註明）",
+      "price": 31500,
+      "p": "NT$31,500（官方建議售價）",
+      "era": "官網未列上市／改款年份",
+      "rng": "官方產品頁未公布，待確認",
+      "brk": "TEKTRO MD-M300 碟煞",
+      "ctl": "5 段 PAS；感測器類型待確認",
+      "spc": "20吋 / Shimano Altus 8速 / 36V 7Ah / 250W 後輪馬達",
+      "war": "官網產品頁未列保固年限；請索取書面保證卡",
+      "str": "HASA 經銷商｜冠鑫自行車 07-724-0816（展示／試乘須先確認）",
+      "maps": [
+        {
+          "label": "冠鑫自行車（前鎮區）",
+          "q": "高雄市前鎮區崗山西街193號"
+        }
+      ],
+      "sc": [
+        3,
+        3,
+        3,
+        3
+      ],
+      "checked": "2026-11-13",
+      "sources": [
+        {
+          "label": "官方規格與售價",
+          "url": "https://www.hasa.com.tw/webls-zh-tw/product-SEF-20.html"
+        },
+        {
+          "label": "官方經銷商名錄",
+          "url": "https://www.hasa.com.tw/webls-zh-tw/msg/msg288.html"
+        }
+      ]
+    },
+    {
+      "r": 9,
+      "n": "VOTANI F3",
+      "w": 21.1,
+      "wt": "21.1 kg（官方規格）",
+      "price": 48000,
+      "p": "NT$48,000（官方建議售價）",
+      "era": "官方頁列2023台灣精品銀質獎；上市年未註明",
+      "rng": "55／40／30 km（1／2／3段；官方測試，非實騎保證）",
+      "brk": "Tektro V夾",
+      "ctl": "扭力感測 / 3 段 + Smart Mode",
+      "spc": "20吋 / Shimano Nexus 內3速 / 36V 7Ah 252Wh / 250W 前輪馬達",
+      "war": "授權通路第一手車主：車架／非避震前叉5年、電控含電池2年、非耗材零件1年；依原廠條款",
+      "str": "BESV 授權門市；HOTAI購通路列高雄左營明誠二路265號／07-557-8977（展示／試乘先確認）",
+      "maps": [
+        {
+          "label": "通路所列高雄門市（請先電洽）",
+          "q": "高雄市左營區明誠二路265號"
+        }
+      ],
+      "sc": [
+        3,
+        3,
+        3,
+        3
+      ],
+      "checked": "2026-11-13",
+      "sources": [
+        {
+          "label": "官方規格與售價",
+          "url": "https://www.besv.com.tw/f3"
+        },
+        {
+          "label": "官方保固條款",
+          "url": "https://www.besv.com.tw/warranty"
+        },
+        {
+          "label": "通路所列高雄交車點",
+          "url": "https://www.hotaigo.com.tw/productdetail/hotai72248-uu0-011-231.html"
+        }
+      ]
+    },
+    {
+      "r": 10,
+      "n": "BESV PSF1（通路預購）",
+      "w": 18.3,
+      "wt": "18.3 kg（官方規格）",
+      "price": 52888,
+      "p": "NT$52,888（城市綠洲藍／金預購；限定門市自取）；官方定價NT$68,800",
+      "era": "官方頁列2020獎項；本批年式待通路確認",
+      "rng": "90／60／40 km（1／2／3段；官方測試，非實騎保證）",
+      "brk": "PROMAX 機械碟煞",
+      "ctl": "扭力感測 / 3 段 + Smart Mode / 後避震",
+      "spc": "20吋 / Shimano Altus 7速 / 36V 10.5Ah 378Wh / 250W 後輪馬達",
+      "war": "授權通路第一手車主：車架／非避震前叉5年、電控含電池2年、非耗材零件1年；須確認本次交車適用",
+      "str": "城市綠洲預購；下訂前洽03-5575298，限定取車門市與高雄交車／展示待確認；非現貨保證",
+      "maps": [],
+      "sc": [
+        3,
+        3,
+        3,
+        3
+      ],
+      "checked": "2026-11-13",
+      "sources": [
+        {
+          "label": "官方規格與定價",
+          "url": "https://www.besv.com.tw/psf1"
+        },
+        {
+          "label": "城市綠洲預購價／取車條件",
+          "url": "https://www.metroasis.com.tw/SalePage/Index/12169874"
+        },
+        {
+          "label": "金色通路頁",
+          "url": "https://www.metroasis.com.tw/SalePage/Index/12169868"
+        },
+        {
+          "label": "官方保固條款",
+          "url": "https://www.besv.com.tw/warranty"
+        }
+      ]
+    }
+  ]
+}

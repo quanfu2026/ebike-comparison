@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>輕量化折疊電輔車互動比較表｜1.0 版</title>
+  <title>輕量化折疊電輔車互動比較表｜1.1 版</title>
   <style>
     :root { --primary:#1a73e8; --light:#e8f0fe; --bg:#f8f9fa; --card:#fff; --text:#202124; --muted:#5f6368; --border:#dadce0; --green:#188038; --red:#d93025; }
     * { box-sizing:border-box; font-family:-apple-system,BlinkMacSystemFont,"Segoe UI","Noto Sans TC",sans-serif; }
@@ -46,13 +46,17 @@
 </head>
 <body>
 <div class="wrap">
-  <h1>輕量化折疊電輔車規格與購車評估工具 <span class="tag">1.0 版</span></h1>
+  <h1>輕量化折疊電輔車規格與購車評估工具 <span class="tag">1.1 版</span></h1>
+  <p style="font-size:.86rem;color:#5f6368">預算上限擴至 NT$60,000｜新增4款，保留原6款。新增資料查核：2026-11-13。價格不含未列明的配件／運費，預購不保證現貨。原6款資料尚未逐項複核；重量是否含電池以各來源註記為準。</p>
   <div class="box">
     <div class="grp"><label>預算區間篩選</label>
       <div class="btns" id="bFilter">
         <button class="active" data-v="all">全部車款</button>
         <button data-v="u20">2 萬元以內</button>
-        <button data-v="o30">3.2 萬～4 萬元</button>
+        <button data-v="u40">4 萬元以內</button>
+        <button data-v="u60">6 萬元以內</button>
+        <button data-v="40to60">4 萬以上～6 萬元</button>
+        <button data-v="50to60">5～6 萬元</button>
       </div>
     </div>
     <div class="grp"><label>車身重量上限</label>
@@ -72,7 +76,7 @@
 
   <div id="tableView" class="tbl-wrap">
     <table>
-      <thead><tr><th>排名</th><th>車款名稱</th><th>車重</th><th>最低參考價</th><th>出品／改款年代</th><th>官方續航</th><th>剎車與操控系統</th><th>保固與高雄賞車據點</th></tr></thead>
+      <thead><tr><th>車款編號</th><th>車款名稱</th><th>車重</th><th>最低參考價</th><th>出品／改款年代</th><th>官方續航</th><th>剎車與操控系統</th><th>保固與高雄賞車據點</th></tr></thead>
       <tbody id="tBody"></tbody>
     </table>
   </div>
@@ -84,7 +88,7 @@
 
   <div id="scoreView" class="score-view">
     <div class="score-bar">
-      <span style="font-size:0.88rem;color:#5f6368;">拖曳下方滑桿調整各項評分（1～5分），系統會自動依總分重新排序：</span>
+      <span style="font-size:0.88rem;color:#5f6368;">拖曳滑桿評分（1～5分），放開後依總分排序。原6款保留舊預設；新增4款均以3分起始，請依試乘經驗調整，分數不代表實測評價：</span>
       <button class="btn-export" onclick="exportScoreCSV()">📥 匯出個人評分結果為 CSV</button>
     </div>
     <div class="score-grid" id="sBody"></div>
@@ -155,6 +159,9 @@ const data = new Array(
   }
 );
 
+data.forEach((d,i)=>{ d.price=[15911,33000,19800,32476,11100,39800][i]; });
+data.push(...[{"r": 7, "n": "HASA SEF16", "w": 12.5, "wt": "12.5 kg（官網；是否含電池未註明）", "price": 32500, "p": "NT$32,500（官方建議售價）", "era": "官網未列上市／改款年份", "rng": "官網未公布；通路標示約40～50 km，測試條件不同", "brk": "PROMAX MV-87 框煞", "ctl": "5 段 PAS；感測器類型待確認", "spc": "16吋 / 單速 / 36V 7Ah 座管電池 / 250W 後輪馬達", "war": "官網產品頁未列保固年限；請索取書面保證卡", "str": "HASA 經銷商｜冠鑫自行車 07-724-0816（展示／試乘須先確認）", "maps": [{"label": "冠鑫自行車（前鎮區）", "q": "高雄市前鎮區崗山西街193號"}], "sc": [3, 3, 3, 3], "checked": "2026-11-13", "sources": [{"label": "官方規格與售價", "url": "https://www.hasa.com.tw/webls-zh-tw/product-SEF-16.html"}, {"label": "官方經銷商名錄", "url": "https://www.hasa.com.tw/webls-zh-tw/msg/msg288.html"}, {"label": "通路續航／重量差異", "url": "https://bikehome.com.tw/product.ftl?PC=217-370-1&agiCode=PTAGI05EO4L3NUT8CDZ65JQGBG&cCode=A-H-HASA"}]}, {"r": 8, "n": "HASA SEF20", "w": 16.25, "wt": "16.25 kg（官網；是否含電池未註明）", "price": 31500, "p": "NT$31,500（官方建議售價）", "era": "官網未列上市／改款年份", "rng": "官方產品頁未公布，待確認", "brk": "TEKTRO MD-M300 碟煞", "ctl": "5 段 PAS；感測器類型待確認", "spc": "20吋 / Shimano Altus 8速 / 36V 7Ah / 250W 後輪馬達", "war": "官網產品頁未列保固年限；請索取書面保證卡", "str": "HASA 經銷商｜冠鑫自行車 07-724-0816（展示／試乘須先確認）", "maps": [{"label": "冠鑫自行車（前鎮區）", "q": "高雄市前鎮區崗山西街193號"}], "sc": [3, 3, 3, 3], "checked": "2026-11-13", "sources": [{"label": "官方規格與售價", "url": "https://www.hasa.com.tw/webls-zh-tw/product-SEF-20.html"}, {"label": "官方經銷商名錄", "url": "https://www.hasa.com.tw/webls-zh-tw/msg/msg288.html"}]}, {"r": 9, "n": "VOTANI F3", "w": 21.1, "wt": "21.1 kg（官方規格）", "price": 48000, "p": "NT$48,000（官方建議售價）", "era": "官方頁列2023台灣精品銀質獎；上市年未註明", "rng": "55／40／30 km（1／2／3段；官方測試，非實騎保證）", "brk": "Tektro V夾", "ctl": "扭力感測 / 3 段 + Smart Mode", "spc": "20吋 / Shimano Nexus 內3速 / 36V 7Ah 252Wh / 250W 前輪馬達", "war": "授權通路第一手車主：車架／非避震前叉5年、電控含電池2年、非耗材零件1年；依原廠條款", "str": "BESV 授權門市；HOTAI購通路列高雄左營明誠二路265號／07-557-8977（展示／試乘先確認）", "maps": [{"label": "通路所列高雄門市（請先電洽）", "q": "高雄市左營區明誠二路265號"}], "sc": [3, 3, 3, 3], "checked": "2026-11-13", "sources": [{"label": "官方規格與售價", "url": "https://www.besv.com.tw/f3"}, {"label": "官方保固條款", "url": "https://www.besv.com.tw/warranty"}, {"label": "通路所列高雄交車點", "url": "https://www.hotaigo.com.tw/productdetail/hotai72248-uu0-011-231.html"}]}, {"r": 10, "n": "BESV PSF1（通路預購）", "w": 18.3, "wt": "18.3 kg（官方規格）", "price": 52888, "p": "NT$52,888（城市綠洲藍／金預購；限定門市自取）；官方定價NT$68,800", "era": "官方頁列2020獎項；本批年式待通路確認", "rng": "90／60／40 km（1／2／3段；官方測試，非實騎保證）", "brk": "PROMAX 機械碟煞", "ctl": "扭力感測 / 3 段 + Smart Mode / 後避震", "spc": "20吋 / Shimano Altus 7速 / 36V 10.5Ah 378Wh / 250W 後輪馬達", "war": "授權通路第一手車主：車架／非避震前叉5年、電控含電池2年、非耗材零件1年；須確認本次交車適用", "str": "城市綠洲預購；下訂前洽03-5575298，限定取車門市與高雄交車／展示待確認；非現貨保證", "maps": [], "sc": [3, 3, 3, 3], "checked": "2026-11-13", "sources": [{"label": "官方規格與定價", "url": "https://www.besv.com.tw/psf1"}, {"label": "城市綠洲預購價／取車條件", "url": "https://www.metroasis.com.tw/SalePage/Index/12169874"}, {"label": "金色通路頁", "url": "https://www.metroasis.com.tw/SalePage/Index/12169868"}, {"label": "官方保固條款", "url": "https://www.besv.com.tw/warranty"}]}]);
+
 let bVal="all", wVal=99, idx=0;
 const labels = new Array("價格 CP 值", "搬運輕巧度", "保固與售後", "動力與續航");
 
@@ -165,7 +172,16 @@ function renderMapButtons(maps){
   ).join("") + `</div>`;
 }
 
-function getList(){ return data.filter(d => (bVal==="all"||d.cat===bVal) && d.w<=wVal); }
+function getList(){
+  return data.filter(d => {
+    const match=bVal==='all' || (bVal==='u20' && d.price<=20000) || (bVal==='u40' && d.price<=40000) || (bVal==='u60' && d.price<=60000) || (bVal==='40to60' && d.price>40000 && d.price<=60000) || (bVal==='50to60' && d.price>=50000 && d.price<=60000);
+    return match && d.w<=wVal;
+  });
+}
+function renderSources(d){
+  if(!d.sources) return '<small style="display:block;color:#5f6368">原1.0資料，尚未逐項複核</small>';
+  return '<small style="display:block">查核：'+d.checked+'<br>'+d.sources.map(s=>`<a href="${s.url}" target="_blank" rel="noopener noreferrer">${s.label}</a>`).join(' · ')+'</small>';
+}
 
 function getRankedList(){
   return getList().slice().map(d=>({...d,tot:d.sc.reduce((a,b)=>a+b,0)})).sort((a,b)=>b.tot-a.tot);
@@ -175,7 +191,7 @@ function render(){
   const list = getList();
   document.getElementById("tBody").innerHTML = list.map(d=>`<tr>
     <td><span class="tag">#${d.r}</span></td>
-    <td><b>${d.n}</b><br><small style="color:#5f6368">${d.spc}</small></td>
+    <td><b>${d.n}</b>${renderSources(d)}<br><small style="color:#5f6368">${d.spc}</small></td>
     <td><b>${d.wt}</b></td>
     <td><span class="tag tag-g">${d.p}</span></td>
     <td>${d.era}</td>
@@ -189,8 +205,8 @@ function render(){
   if(!list.length){ cIdx.textContent="0 / 0"; cBody.innerHTML="<p>無符合條件車款</p>"; }
   else {
     const d=list[idx];
-    cIdx.textContent=`第 ${idx+1} 筆 / 共 ${list.length} 筆（車重排名 #${d.r}）`;
-    cBody.innerHTML=`<h2 style="margin:0 0 12px;color:#1a73e8">${d.n} <span class="tag">${d.wt}</span></h2> <div class="grid"> <div class="item"><b>最低參考價</b>${d.p}</div> <div class="item"><b>出品／改款年代</b>${d.era}</div> <div class="item"><b>官方行駛距離</b>${d.rng}</div> <div class="item"><b>剎車系統</b>${d.brk}</div> <div class="item"><b>操控系統與助力</b>${d.ctl}</div> <div class="item"><b>電池、馬達與變速</b>${d.spc}</div> <div class="item"><b>保固與售後</b>${d.war}</div> <div class="item"><b>購買與高雄試乘點（點擊開啟地圖）</b>${d.str}${renderMapButtons(d.maps)}</div> </div>`;
+    cIdx.textContent=`第 ${idx+1} 筆 / 共 ${list.length} 筆（車款編號 #${d.r}）`;
+    cBody.innerHTML=`<h2 style="margin:0 0 12px;color:#1a73e8">${d.n} <span class="tag">${d.wt}</span></h2> <div class="grid"> <div class="item"><b>最低參考價</b>${d.p}</div> <div class="item"><b>出品／改款年代</b>${d.era}</div> <div class="item"><b>官方行駛距離</b>${d.rng}</div> <div class="item"><b>剎車系統</b>${d.brk}</div> <div class="item"><b>操控系統與助力</b>${d.ctl}</div> <div class="item"><b>電池、馬達與變速</b>${d.spc}</div> <div class="item"><b>保固與售後</b>${d.war}</div> <div class="item"><b>購買與高雄試乘點（點擊開啟地圖）</b>${d.str}${renderMapButtons(d.maps)}</div><div class="item"><b>來源與查核日期</b>${renderSources(d)}</div> </div>`;
 }
   renderScores();
 }
