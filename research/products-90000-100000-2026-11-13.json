@@ -1,0 +1,43 @@
+{
+  "checked": "2026-11-13",
+  "scope": "僅折疊電輔車；9至10萬元指定通路報價；持續補資料",
+  "products": [
+    {
+      "r": 11,
+      "n": "Tern Vektron D8（Bosch；通路規格）",
+      "w": 22,
+      "wt": "約22 kg（小哲居通路；年式／實車重量須確認）",
+      "price": 96800,
+      "p": "NT$96,800（小哲居所列售價）；另見美尼亞NT$88,000，不同年式／配備請先確認",
+      "era": "年式待確認；不同年式電池與尺寸規格不可混用",
+      "rng": "通路標示最高121 km；實際受模式、載重及路況影響",
+      "brk": "油壓碟煞（實際型號請依交車規格）",
+      "ctl": "Bosch Active Line Plus 中置系統／50 Nm；儀表配備須確認",
+      "spc": "20吋 / 8速 / 通路標示PowerPack 545電池 / 折疊尺寸41×86×68 cm；均須確認交車年式",
+      "war": "保固期間與登錄條件待通路書面確認",
+      "str": "小哲居、七六單車等通路；高雄展示／試乘／交車門市待補，未確認現貨",
+      "maps": [],
+      "sc": [
+        3,
+        3,
+        3,
+        3
+      ],
+      "checked": "2026-11-13",
+      "sources": [
+        {
+          "label": "小哲居96,800元／規格",
+          "url": "https://bikehome.com.tw/product.ftl?PC=351-317&agiCode=PTAGI05C7HSGNB03501G566ZUB&cCode=A-T-Tern"
+        },
+        {
+          "label": "美尼亞另有88,000元報價",
+          "url": "https://www.sportmania.asia/categories/tern"
+        },
+        {
+          "label": "七六單車規格交叉比對",
+          "url": "https://www.76bikeya.com/products/tern-vektron-d8"
+        }
+      ]
+    }
+  ]
+}

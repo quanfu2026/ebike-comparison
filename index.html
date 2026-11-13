@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>輕量化折疊電輔車互動比較表｜1.1 版</title>
+  <title>輕量化折疊電輔車互動比較表｜1.2 版</title>
   <style>
     :root { --primary:#1a73e8; --light:#e8f0fe; --bg:#f8f9fa; --card:#fff; --text:#202124; --muted:#5f6368; --border:#dadce0; --green:#188038; --red:#d93025; }
     * { box-sizing:border-box; font-family:-apple-system,BlinkMacSystemFont,"Segoe UI","Noto Sans TC",sans-serif; }
@@ -46,8 +46,8 @@
 </head>
 <body>
 <div class="wrap">
-  <h1>輕量化折疊電輔車規格與購車評估工具 <span class="tag">1.1 版</span></h1>
-  <p style="font-size:.86rem;color:#5f6368">僅收折疊電輔車｜現有10款。7～8萬元區間尚未確認符合條件車款，資料待補。新增資料查核：2026-11-13。價格不含未列明的配件／運費，預購不保證現貨。原6款資料尚未逐項複核；重量是否含電池以各來源註記為準。</p>
+  <h1>輕量化折疊電輔車規格與購車評估工具 <span class="tag">1.2 版</span></h1>
+  <p style="font-size:.86rem;color:#5f6368">僅收折疊電輔車｜現有11款。9～10萬元已列1款指定通路報價，其餘資料續補。7～8萬元區間尚未確認符合條件車款，資料待補。新增資料查核：2026-11-13。價格不含未列明的配件／運費，預購不保證現貨。預算依各車款所列通路參考價篩選，不代表市場最低價。原6款資料尚未逐項複核；重量是否含電池以各來源註記為準。</p>
   <div class="box">
     <div class="grp"><label>預算區間篩選</label>
       <div class="btns" id="bFilter">
@@ -58,6 +58,7 @@
         <button data-v="40to60">4 萬以上～6 萬元</button>
         <button data-v="50to60">5～6 萬元</button>
         <button data-v="70to80">7～8 萬元（待補）</button>
+        <button data-v="90to100">9～10 萬元（待補）</button>
       </div>
     </div>
     <div class="grp"><label>車身重量上限</label>
@@ -77,7 +78,7 @@
 
   <div id="tableView" class="tbl-wrap">
     <table>
-      <thead><tr><th>車款編號</th><th>車款名稱</th><th>車重</th><th>最低參考價</th><th>出品／改款年代</th><th>官方續航</th><th>剎車與操控系統</th><th>保固與高雄賞車據點</th></tr></thead>
+      <thead><tr><th>車款編號</th><th>車款名稱</th><th>車重</th><th>參考售價／條件</th><th>出品／改款年代</th><th>官方續航</th><th>剎車與操控系統</th><th>保固與高雄賞車據點</th></tr></thead>
       <tbody id="tBody"></tbody>
     </table>
   </div>
@@ -89,7 +90,7 @@
 
   <div id="scoreView" class="score-view">
     <div class="score-bar">
-      <span style="font-size:0.88rem;color:#5f6368;">拖曳滑桿評分（1～5分），放開後依總分排序。原6款保留舊預設；新增4款均以3分起始，請依試乘經驗調整，分數不代表實測評價：</span>
+      <span style="font-size:0.88rem;color:#5f6368;">拖曳滑桿評分（1～5分），放開後依總分排序。原6款保留舊預設；新增車款均以3分起始，請依試乘經驗調整，分數不代表實測評價：</span>
       <button class="btn-export" onclick="exportScoreCSV()">📥 匯出個人評分結果為 CSV</button>
     </div>
     <div class="score-grid" id="sBody"></div>
@@ -163,6 +164,8 @@ const data = new Array(
 data.forEach((d,i)=>{ d.price=[15911,33000,19800,32476,11100,39800][i]; });
 data.push(...[{"r": 7, "n": "HASA SEF16", "w": 12.5, "wt": "12.5 kg（官網；是否含電池未註明）", "price": 32500, "p": "NT$32,500（官方建議售價）", "era": "官網未列上市／改款年份", "rng": "官網未公布；通路標示約40～50 km，測試條件不同", "brk": "PROMAX MV-87 框煞", "ctl": "5 段 PAS；感測器類型待確認", "spc": "16吋 / 單速 / 36V 7Ah 座管電池 / 250W 後輪馬達", "war": "官網產品頁未列保固年限；請索取書面保證卡", "str": "HASA 經銷商｜冠鑫自行車 07-724-0816（展示／試乘須先確認）", "maps": [{"label": "冠鑫自行車（前鎮區）", "q": "高雄市前鎮區崗山西街193號"}], "sc": [3, 3, 3, 3], "checked": "2026-11-13", "sources": [{"label": "官方規格與售價", "url": "https://www.hasa.com.tw/webls-zh-tw/product-SEF-16.html"}, {"label": "官方經銷商名錄", "url": "https://www.hasa.com.tw/webls-zh-tw/msg/msg288.html"}, {"label": "通路續航／重量差異", "url": "https://bikehome.com.tw/product.ftl?PC=217-370-1&agiCode=PTAGI05EO4L3NUT8CDZ65JQGBG&cCode=A-H-HASA"}]}, {"r": 8, "n": "HASA SEF20", "w": 16.25, "wt": "16.25 kg（官網；是否含電池未註明）", "price": 31500, "p": "NT$31,500（官方建議售價）", "era": "官網未列上市／改款年份", "rng": "官方產品頁未公布，待確認", "brk": "TEKTRO MD-M300 碟煞", "ctl": "5 段 PAS；感測器類型待確認", "spc": "20吋 / Shimano Altus 8速 / 36V 7Ah / 250W 後輪馬達", "war": "官網產品頁未列保固年限；請索取書面保證卡", "str": "HASA 經銷商｜冠鑫自行車 07-724-0816（展示／試乘須先確認）", "maps": [{"label": "冠鑫自行車（前鎮區）", "q": "高雄市前鎮區崗山西街193號"}], "sc": [3, 3, 3, 3], "checked": "2026-11-13", "sources": [{"label": "官方規格與售價", "url": "https://www.hasa.com.tw/webls-zh-tw/product-SEF-20.html"}, {"label": "官方經銷商名錄", "url": "https://www.hasa.com.tw/webls-zh-tw/msg/msg288.html"}]}, {"r": 9, "n": "VOTANI F3", "w": 21.1, "wt": "21.1 kg（官方規格）", "price": 48000, "p": "NT$48,000（官方建議售價）", "era": "官方頁列2023台灣精品銀質獎；上市年未註明", "rng": "55／40／30 km（1／2／3段；官方測試，非實騎保證）", "brk": "Tektro V夾", "ctl": "扭力感測 / 3 段 + Smart Mode", "spc": "20吋 / Shimano Nexus 內3速 / 36V 7Ah 252Wh / 250W 前輪馬達", "war": "授權通路第一手車主：車架／非避震前叉5年、電控含電池2年、非耗材零件1年；依原廠條款", "str": "BESV 授權門市；HOTAI購通路列高雄左營明誠二路265號／07-557-8977（展示／試乘先確認）", "maps": [{"label": "通路所列高雄門市（請先電洽）", "q": "高雄市左營區明誠二路265號"}], "sc": [3, 3, 3, 3], "checked": "2026-11-13", "sources": [{"label": "官方規格與售價", "url": "https://www.besv.com.tw/f3"}, {"label": "官方保固條款", "url": "https://www.besv.com.tw/warranty"}, {"label": "通路所列高雄交車點", "url": "https://www.hotaigo.com.tw/productdetail/hotai72248-uu0-011-231.html"}]}, {"r": 10, "n": "BESV PSF1（通路預購）", "w": 18.3, "wt": "18.3 kg（官方規格）", "price": 52888, "p": "NT$52,888（城市綠洲藍／金預購；限定門市自取）；官方定價NT$68,800", "era": "官方頁列2020獎項；本批年式待通路確認", "rng": "90／60／40 km（1／2／3段；官方測試，非實騎保證）", "brk": "PROMAX 機械碟煞", "ctl": "扭力感測 / 3 段 + Smart Mode / 後避震", "spc": "20吋 / Shimano Altus 7速 / 36V 10.5Ah 378Wh / 250W 後輪馬達", "war": "授權通路第一手車主：車架／非避震前叉5年、電控含電池2年、非耗材零件1年；須確認本次交車適用", "str": "城市綠洲預購；下訂前洽03-5575298，限定取車門市與高雄交車／展示待確認；非現貨保證", "maps": [], "sc": [3, 3, 3, 3], "checked": "2026-11-13", "sources": [{"label": "官方規格與定價", "url": "https://www.besv.com.tw/psf1"}, {"label": "城市綠洲預購價／取車條件", "url": "https://www.metroasis.com.tw/SalePage/Index/12169874"}, {"label": "金色通路頁", "url": "https://www.metroasis.com.tw/SalePage/Index/12169868"}, {"label": "官方保固條款", "url": "https://www.besv.com.tw/warranty"}]}]);
 
+data.push({"r": 11, "n": "Tern Vektron D8（Bosch；通路規格）", "w": 22, "wt": "約22 kg（小哲居通路；年式／實車重量須確認）", "price": 96800, "p": "NT$96,800（小哲居所列售價）；另見美尼亞NT$88,000，不同年式／配備請先確認", "era": "年式待確認；不同年式電池與尺寸規格不可混用", "rng": "通路標示最高121 km；實際受模式、載重及路況影響", "brk": "油壓碟煞（實際型號請依交車規格）", "ctl": "Bosch Active Line Plus 中置系統／50 Nm；儀表配備須確認", "spc": "20吋 / 8速 / 通路標示PowerPack 545電池 / 折疊尺寸41×86×68 cm；均須確認交車年式", "war": "保固期間與登錄條件待通路書面確認", "str": "小哲居、七六單車等通路；高雄展示／試乘／交車門市待補，未確認現貨", "maps": [], "sc": [3, 3, 3, 3], "checked": "2026-11-13", "sources": [{"label": "小哲居96,800元／規格", "url": "https://bikehome.com.tw/product.ftl?PC=351-317&agiCode=PTAGI05C7HSGNB03501G566ZUB&cCode=A-T-Tern"}, {"label": "美尼亞另有88,000元報價", "url": "https://www.sportmania.asia/categories/tern"}, {"label": "七六單車規格交叉比對", "url": "https://www.76bikeya.com/products/tern-vektron-d8"}]});
+
 let bVal="all", wVal=99, idx=0;
 const labels = new Array("價格 CP 值", "搬運輕巧度", "保固與售後", "動力與續航");
 
@@ -175,11 +178,11 @@ function renderMapButtons(maps){
 
 function getList(){
   return data.filter(d => {
-    const match=bVal==='all' || (bVal==='u20' && d.price<=20000) || (bVal==='u40' && d.price<=40000) || (bVal==='u60' && d.price<=60000) || (bVal==='40to60' && d.price>40000 && d.price<=60000) || (bVal==='50to60' && d.price>=50000 && d.price<=60000) || (bVal==='70to80' && d.price>=70000 && d.price<=80000);
+    const match=bVal==='all' || (bVal==='u20' && d.price<=20000) || (bVal==='u40' && d.price<=40000) || (bVal==='u60' && d.price<=60000) || (bVal==='40to60' && d.price>40000 && d.price<=60000) || (bVal==='50to60' && d.price>=50000 && d.price<=60000) || (bVal==='70to80' && d.price>=70000 && d.price<=80000) || (bVal==='90to100' && d.price>=90000 && d.price<=100000);
     return match && d.w<=wVal;
   });
 }
-function emptyMessage(){ return bVal==='70to80' ? '7～8萬元折疊電輔車：尚未確認符合條件車款，資料待補（查核：2026-11-13）' : '無符合篩選條件的車款'; }
+function emptyMessage(){ if(bVal==='90to100') return wVal<22 ? '無符合目前重量條件的9～10萬元折疊車；其他車款資料待補' : '9～10萬元折疊電輔車：尚未確認符合條件車款，資料待補'; return bVal==='70to80' ? '7～8萬元折疊電輔車：尚未確認符合條件車款，資料待補（查核：2026-11-13）' : '無符合篩選條件的車款'; }
 function renderSources(d){
   if(!d.sources) return '<small style="display:block;color:#5f6368">原1.0資料，尚未逐項複核</small>';
   return '<small style="display:block">查核：'+d.checked+'<br>'+d.sources.map(s=>`<a href="${s.url}" target="_blank" rel="noopener noreferrer">${s.label}</a>`).join(' · ')+'</small>';
@@ -208,7 +211,7 @@ function render(){
   else {
     const d=list[idx];
     cIdx.textContent=`第 ${idx+1} 筆 / 共 ${list.length} 筆（車款編號 #${d.r}）`;
-    cBody.innerHTML=`<h2 style="margin:0 0 12px;color:#1a73e8">${d.n} <span class="tag">${d.wt}</span></h2> <div class="grid"> <div class="item"><b>最低參考價</b>${d.p}</div> <div class="item"><b>出品／改款年代</b>${d.era}</div> <div class="item"><b>官方行駛距離</b>${d.rng}</div> <div class="item"><b>剎車系統</b>${d.brk}</div> <div class="item"><b>操控系統與助力</b>${d.ctl}</div> <div class="item"><b>電池、馬達與變速</b>${d.spc}</div> <div class="item"><b>保固與售後</b>${d.war}</div> <div class="item"><b>購買與高雄試乘點（點擊開啟地圖）</b>${d.str}${renderMapButtons(d.maps)}</div><div class="item"><b>來源與查核日期</b>${renderSources(d)}</div> </div>`;
+    cBody.innerHTML=`<h2 style="margin:0 0 12px;color:#1a73e8">${d.n} <span class="tag">${d.wt}</span></h2> <div class="grid"> <div class="item"><b>參考售價／條件</b>${d.p}</div> <div class="item"><b>出品／改款年代</b>${d.era}</div> <div class="item"><b>官方行駛距離</b>${d.rng}</div> <div class="item"><b>剎車系統</b>${d.brk}</div> <div class="item"><b>操控系統與助力</b>${d.ctl}</div> <div class="item"><b>電池、馬達與變速</b>${d.spc}</div> <div class="item"><b>保固與售後</b>${d.war}</div> <div class="item"><b>購買與高雄試乘點（點擊開啟地圖）</b>${d.str}${renderMapButtons(d.maps)}</div><div class="item"><b>來源與查核日期</b>${renderSources(d)}</div> </div>`;
 }
   renderScores();
 }
